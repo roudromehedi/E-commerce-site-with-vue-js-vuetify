@@ -1,0 +1,65 @@
+<template>
+  <v-card :loading="loading" class="mx-auto my-12" max-width="374">
+    <v-img
+      :src="item.images[0]"
+      max-height="200"
+      max-width="500"
+      min-height="200"
+      contain
+    ></v-img>
+
+    <v-card-title>{{ item.title }}</v-card-title>
+
+    <v-card-text>
+      <v-row align="center" class="mx-0">
+        <v-rating
+          :value="4.5"
+          color="amber"
+          dense
+          half-increments
+          readonly
+          size="14"
+        ></v-rating>
+
+        <div class="grey--text ms-4">4.5 (413)</div>
+      </v-row>
+
+      <div class="my-4 text-subtitle-1">€ {{ item.price }}</div>
+
+      <div class="cropped-text">
+        {{ item.description }}
+      </div>
+      <div class="mt-2 read-more">Read more</div>
+    </v-card-text>
+
+    <v-divider class="mx-4"></v-divider>
+
+    <v-card-actions>
+      <v-btn color="deep-purple lighten-2" text @click="reserve">
+        Buy now
+      </v-btn>
+    </v-card-actions>
+  </v-card>
+</template>
+<script>
+export default {
+  name: "ProductCard",
+  data() {
+    return {};
+  },
+  props: {
+    item: {},
+  },
+};
+</script>
+<style lang="scss">
+.cropped-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.read-more {
+  color: rgb(238, 119, 50);
+}
+</style>
