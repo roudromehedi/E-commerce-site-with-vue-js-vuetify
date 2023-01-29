@@ -1,5 +1,5 @@
 <template>
-  <v-card :loading="loading" class="mx-auto my-12" max-width="374">
+  <v-card :loading="loading" class="mx-auto my-12 pt-5" max-width="374">
     <v-img
       :src="item.images[0]"
       max-height="200"

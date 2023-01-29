@@ -32,16 +32,29 @@
       <v-icon>mdi-heart-outline</v-icon>
     </v-btn>
     <v-divider vertical class=""></v-divider>
-    <v-btn icon class="mx-1">
+    <v-btn icon class="mx-1" @click="showChildDialog = true">
       <v-badge color="#94D0EF" content="2">
         <v-icon>mdi-cart-outline</v-icon>
-      </v-badge>
-    </v-btn>
+      </v-badge> </v-btn
+    ><CartDialog
+      :show-dialog="showChildDialog"
+      @close="showChildDialog = false"
+    ></CartDialog>
   </v-app-bar>
 </template>
 
 <script>
-export default {};
+import CartDialog from "./cart.vue";
+export default {
+  components: {
+    CartDialog,
+  },
+  data() {
+    return {
+      showChildDialog: false,
+    };
+  },
+};
 </script>
 
 <style>
