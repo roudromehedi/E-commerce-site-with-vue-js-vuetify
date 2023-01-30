@@ -1,5 +1,5 @@
 <template>
-  <v-card :loading="loading" class="mx-auto my-12 pt-5" max-width="374">
+  <v-card class="mx-auto my-12 pt-5" max-width="374">
     <v-img
       :src="item.images[0]"
       max-height="200"
@@ -35,7 +35,7 @@
     <v-divider class="mx-4"></v-divider>
 
     <v-card-actions>
-      <v-btn color="deep-purple lighten-2" text @click="reserve">
+      <v-btn color="deep-purple lighten-2" text @click="AddToCart">
         Buy now
       </v-btn>
     </v-card-actions>
@@ -45,10 +45,23 @@
 export default {
   name: "ProductCard",
   data() {
-    return {};
+    return {
+      cart: [],
+    };
   },
   props: {
     item: {},
+  },
+  methods: {
+    AddToCart() {
+      this.cart.push(this.item.title);
+
+      // push the new car to list
+
+      // store the data in localStorage
+      localStorage.setItem("cart", JSON.stringify(this.cart));
+      // clear the input
+    },
   },
 };
 </script>

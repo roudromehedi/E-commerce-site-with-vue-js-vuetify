@@ -20,10 +20,10 @@ export default {
   props: {
     items: {},
   },
-  data: () => ({}),
+  data() {
+    return {};
+  },
 };
 </script>
 
 <style></style>
-{ class: "pa-0", sold: "-20%", image: "1.png", title: "KD 8 EXT", price: "$
-145.00", },

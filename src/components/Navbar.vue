@@ -32,11 +32,12 @@
       <v-icon>mdi-heart-outline</v-icon>
     </v-btn>
     <v-divider vertical class=""></v-divider>
-    <v-btn icon class="mx-1" @click="showChildDialog = true">
-      <v-badge color="#94D0EF" content="2">
+    <v-btn icon class="mx-1" @click="getCart()">
+      <v-badge color="#94D0EF" :content="this.cartItems.length">
         <v-icon>mdi-cart-outline</v-icon>
       </v-badge> </v-btn
     ><CartDialog
+      :cartItems="this.cartItems"
       :show-dialog="showChildDialog"
       @close="showChildDialog = false"
     ></CartDialog>
@@ -50,9 +51,13 @@ export default {
     CartDialog,
   },
   data() {
-    return {
-      showChildDialog: false,
-    };
+    return { cartItems: [], showChildDialog: false, length: 0 };
+  },
+  methods: {
+    getCart() {
+      this.showChildDialog = true;
+      this.cartItems = JSON.parse(localStorage.getItem("cart"));
+    },
   },
 };
 </script>

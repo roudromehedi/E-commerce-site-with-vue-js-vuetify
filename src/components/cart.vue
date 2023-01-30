@@ -1,8 +1,9 @@
 <template>
   <v-dialog v-model="showDialog" max-width="290">
-    <v-card>
-      <v-card-title class="headline">Hello World</v-card-title>
-      <v-card-text> Dialog component. </v-card-text>
+    <v-card class="px-5 py-5">
+      <v-card-title class="ml-auto px-0">Cart Items</v-card-title>
+      <div v-for="item in cartItems" :key="item">* {{ item }}</div>
+
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn color="green" text @click="closeDialog">Close</v-btn>
@@ -14,11 +15,16 @@
 <script>
 export default {
   name: "CartDialog",
+  components: {},
+  data() {
+    return {};
+  },
   props: {
     showDialog: {
       type: Boolean,
       default: false,
     },
+    cartItems: { type: [] },
   },
   methods: {
     closeDialog() {
