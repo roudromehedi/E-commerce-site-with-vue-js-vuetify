@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     AddToCart() {
-      this.cart.push(this.item.title);
+      this.cart.push(this.item);
 
       // push the new car to list
 
