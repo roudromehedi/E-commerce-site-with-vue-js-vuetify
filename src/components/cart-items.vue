@@ -12,8 +12,16 @@
         <h3 class="mb-0">{{ title }}</h3>
       </div>
       <div class="mt-2">
-        <span class="font-weight-bold">Price: {{ price }} €</span>
-        <span class="ml-2">Quantity: {{ quantity }}</span>
+        <div>
+          <span class="font-weight-bold">Price: </span>
+          <span>{{ totalPrice }} €</span>
+        </div>
+        <div class="mt-2">
+          <span class="font-weight-bold">Quantity:</span>
+          <select v-model="selectedQuantity" @change="updateQuantity">
+            <option v-for="i in 3" :value="i" :key="i">{{ i }}</option>
+          </select>
+        </div>
       </div>
     </v-card-text>
     <v-icon class="mr-2" color="red" @click="deleteItem"
@@ -27,7 +35,9 @@ export default {
   name: "CartItems",
   components: {},
   data() {
-    return {};
+    return {
+      selectedQuantity: 1,
+    };
   },
   props: {
     title: {
@@ -35,7 +45,6 @@ export default {
       default: "",
     },
     price: {
-      type: Number,
       default: 0,
     },
     quantity: {
@@ -47,7 +56,18 @@ export default {
       default: null,
     },
   },
+  computed: {
+    totalPrice() {
+      return this.price * this.quantity;
+    },
+  },
   methods: {
+    updateTotalPrice() {
+      this.$emit("update-total-price");
+    },
+    updateQuantity() {
+      this.$emit("update-quantity", this.selectedQuantity);
+    },
     deleteItem() {
       this.$emit("delete", this.title);
     },
