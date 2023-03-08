@@ -1,20 +1,24 @@
 <template>
-  <v-card flat class="d-flex flex-row" color="#ECEFF1">
+  <v-card flat class="d-flex flex-row" min-height="100">
     <v-img
+      contain
       class="align-self-center"
       :src="image"
-      max-width="150"
-      max-height="150"
+      max-width="100"
+      max-height="100"
     />
     <v-card-text class="ml-3">
       <div class="d-flex justify-space-between align-center">
-        <h3 class="headline mb-0">{{ title }}</h3>
+        <h3 class="mb-0">{{ title }}</h3>
       </div>
       <div class="mt-2">
         <span class="font-weight-bold">Price: {{ price }} €</span>
         <span class="ml-2">Quantity: {{ quantity }}</span>
       </div>
     </v-card-text>
+    <v-icon class="mr-2" color="red" @click="deleteItem"
+      >mdi-delete-outline</v-icon
+    >
   </v-card>
 </template>
 
@@ -41,6 +45,11 @@ export default {
     image: {
       type: String,
       default: null,
+    },
+  },
+  methods: {
+    deleteItem() {
+      this.$emit("delete", this.title);
     },
   },
 };

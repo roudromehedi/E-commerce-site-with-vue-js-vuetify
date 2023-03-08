@@ -54,12 +54,18 @@ export default {
   },
   methods: {
     AddToCart() {
+      // retrieve the existing cart data from localStorage
+      const storedCart = localStorage.getItem("cart");
+
+      // if there's existing data, parse it as JSON and use it as the initial cart array
+      this.cart = storedCart ? JSON.parse(storedCart) : [];
+
+      // push the new item to the cart
       this.cart.push(this.item);
 
-      // push the new car to list
-
-      // store the data in localStorage
+      // store the updated cart data in localStorage
       localStorage.setItem("cart", JSON.stringify(this.cart));
+
       // clear the input
     },
   },
