@@ -20,7 +20,9 @@
         <v-card-actions>
           <v-btn outlined color="red" text @click="closeDialog">Close</v-btn>
           <v-spacer></v-spacer>
-          <v-btn outlined color="green" text>Payment</v-btn>
+          <v-btn text outlined color="green" @click="shoppingBag"
+            >Shopping Bag</v-btn
+          >
         </v-card-actions>
       </v-container>
     </v-card>
@@ -56,6 +58,10 @@ export default {
       );
     },
     closeDialog() {
+      this.$emit("close");
+    },
+    shoppingBag() {
+      this.$router.push("/checkout");
       this.$emit("close");
     },
     removeItem(index) {

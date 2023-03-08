@@ -1,12 +1,20 @@
 <template>
   <v-card class="mx-auto my-12 pt-5" max-width="374">
-    <v-img
-      :src="item.images[0]"
-      max-height="200"
-      max-width="500"
-      min-height="200"
-      contain
-    ></v-img>
+    <router-link
+      :to="{
+        name: 'ProductDetailsPage',
+        params: { id: item.id },
+        props: { item: item },
+      }"
+    >
+      <v-img
+        :src="item.images[0]"
+        max-height="200"
+        max-width="500"
+        min-height="200"
+        contain
+      ></v-img>
+    </router-link>
 
     <v-card-title>{{ item.title }}</v-card-title>
 
@@ -36,7 +44,7 @@
 
     <v-card-actions>
       <v-btn color="deep-purple lighten-2" text @click="AddToCart">
-        Buy now
+        Add to cart
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -47,11 +55,14 @@ export default {
   data() {
     return {
       cart: [],
+      text: "Hello",
+      id: 5,
     };
   },
   props: {
     item: {},
   },
+
   methods: {
     AddToCart() {
       // retrieve the existing cart data from localStorage

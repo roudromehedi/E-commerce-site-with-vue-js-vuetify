@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import CheckoutPage from "../components/checkout-page.vue";
+import ProductDetailsPage from "../components/product-details-page.vue";
 
 Vue.use(VueRouter);
 
@@ -9,6 +11,16 @@ const routes = [
     path: "/home",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/checkout",
+    name: "CheckoutPage",
+    component: CheckoutPage,
+  },
+  {
+    path: "/product-details/:id",
+    name: "ProductDetailsPage",
+    component: ProductDetailsPage,
   },
   {
     path: "/about",
