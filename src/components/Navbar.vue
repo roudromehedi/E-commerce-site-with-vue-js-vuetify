@@ -1,7 +1,7 @@
 <template>
   <v-app-bar app color="#3853D8" dark>
-    <v-btn icon>
-      <v-icon>mdi-magnify</v-icon>
+    <v-btn icon @click="goToHome">
+      <v-icon>mdi-home</v-icon>
     </v-btn>
     <v-divider vertical class="ml-1 mr-3"></v-divider>
     <v-btn icon>
@@ -10,7 +10,6 @@
 
     <div
       style="
-        position: absolute;
         margin-left: auto;
         margin-right: auto;
         left: 0;
@@ -57,6 +56,9 @@ export default {
     getCart() {
       this.showChildDialog = true;
       this.cartItems = JSON.parse(localStorage.getItem("cart"));
+    },
+    goToHome() {
+      this.$router.push("/");
     },
   },
 };
