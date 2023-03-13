@@ -43,12 +43,25 @@
     <v-divider class="mx-4"></v-divider>
 
     <v-card-actions>
-      <v-btn color="deep-purple lighten-2" text @click="AddToCart">
+      <v-btn color="deep-purple lighten-2" text @click="addToCart">
         Add to cart
       </v-btn>
     </v-card-actions>
+    <v-snackbar
+      transition="fab-transition"
+      v-model="showSnackbar"
+      :timeout="2000"
+      :top="true"
+      :right="true"
+      color="success"
+      elevation="6"
+    >
+      <v-icon left>mdi-check-circle-outline</v-icon>
+      Item added to cart!
+    </v-snackbar>
   </v-card>
 </template>
+
 <script>
 export default {
   name: "ProductCard",
@@ -57,14 +70,14 @@ export default {
       cart: [],
       text: "Hello",
       id: 5,
+      showSnackbar: false,
     };
   },
   props: {
     item: {},
   },
-
   methods: {
-    AddToCart() {
+    addToCart() {
       // retrieve the existing cart data from localStorage
       const storedCart = localStorage.getItem("cart");
 
@@ -77,11 +90,13 @@ export default {
       // store the updated cart data in localStorage
       localStorage.setItem("cart", JSON.stringify(this.cart));
 
-      // clear the input
+      // show a success alert
+      this.showSnackbar = true;
     },
   },
 };
 </script>
+
 <style lang="scss">
 .cropped-text {
   display: -webkit-box;

@@ -13,6 +13,11 @@ export default {
   components: {
     Dashboard,
   },
+  data() {
+    return {
+      alertVisible: true,
+    };
+  },
 };
 </script>
 <style scoped>

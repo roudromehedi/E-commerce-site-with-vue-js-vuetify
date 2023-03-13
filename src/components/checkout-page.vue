@@ -12,7 +12,7 @@
         :price="item.price"
         :quantity="item.quantity"
         class="mb-2"
-        @delete="removeItem(index)"
+        @delete="deleteItem(index)"
         @update-quantity="updateQuantity(index, $event)"
       ></cartItems>
       <div class="mt-5 d-flex justify-space-between">
@@ -20,7 +20,7 @@
         <span class="font-weight-bold">{{ calculateTotalPrice() }} €</span>
       </div>
       <v-card-actions>
-        <v-btn outlined color="red" text>Close</v-btn>
+        <v-btn outlined color="red" text>Back</v-btn>
         <v-spacer></v-spacer>
         <v-btn text outlined color="green">Preceed to Payment</v-btn>
       </v-card-actions>

@@ -1,5 +1,5 @@
 <template>
-  <v-card flat class="d-flex flex-row" min-height="100">
+  <v-card flat class="d-flex flex-row justify-center" min-height="100">
     <v-img
       contain
       class="align-self-center"

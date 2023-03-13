@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-model="showDialog" class="px-5 py-5" max-width="600">
     <v-card>
-      <v-container class="px-5 py-5">
+      <v-container v-if="cartItems.length > 0" class="px-5 py-5">
         <cartItems
           v-for="(item, index) in cartItems"
           :key="item.id"
@@ -25,6 +25,7 @@
           >
         </v-card-actions>
       </v-container>
+      <div v-else class="px-10 py-10">No items in the cart</div>
     </v-card>
   </v-dialog>
 </template>
