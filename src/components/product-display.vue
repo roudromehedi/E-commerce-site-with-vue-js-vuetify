@@ -6,11 +6,15 @@
           <v-icon color="black" class="mr-2">mdi-chevron-down</v-icon>
           <strong>CATEGORIES</strong>
           <v-spacer></v-spacer>
-          <v-icon color="grey" small>mdi-close</v-icon> </v-toolbar
-        ><v-layout class=""
-          ><div class="mt-n5">
+          <v-icon color="grey" small>mdi-close</v-icon>
+        </v-toolbar>
+        <v-layout>
+          <div class="mt-n5">
             <v-list-item v-for="(item, i) in category" :key="i">
-              <v-list-item-content @click="filterCategory(item)">
+              <v-list-item-content
+                @click="filterCategory(item)"
+                class="cursor-pointer"
+              >
                 <v-list-item-title
                   v-text="item"
                   class="ml-8"
@@ -21,8 +25,9 @@
                   v-text="category.count"
                 ></v-list-item-subtitle>
               </v-list-item-action>
-            </v-list-item></div
-        ></v-layout>
+            </v-list-item>
+          </div>
+        </v-layout>
       </v-card>
       <v-card flat outlined tile>
         <v-toolbar flat>
@@ -188,7 +193,8 @@ export default {
 .scroll {
   overflow-y: scroll;
 }
-.test_cursor {
+
+.cursor-pointer {
   cursor: pointer;
 }
 </style>
